@@ -1,2 +1,15 @@
-# noteai
-大语言模型加持的笔记ai,可以构建知识库,绘图等功能
+# 构建
+docker compose build --no-cache
+# 启动
+docker compose up -d
+进入
+# 停止
+docker compose stop
+# 彻底清理
+docker compose down
+
+
+
+docker system prune -af
+docker builder prune -af
+docker system df

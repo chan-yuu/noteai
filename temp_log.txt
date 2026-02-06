@@ -1,0 +1,300 @@
+2026-02-05 02:33:18.561 | DEBUG    | surreal_commands.core.registry:__new__:24 - Creating CommandRegistry singleton instance
+2026-02-05 02:33:18.561 | DEBUG    | surreal_commands.core.registry:__init__:31 - Initializing CommandRegistry
+2026-02-05 02:33:18.617 | INFO     | surreal_commands.core.worker:configure_logging:85 - Debug mode disabled - showing only INFO level and above
+╭──────────────────────────────────────────────────────────────────────────────╮
+│ Surreal Commands Worker                                                      │
+╰──────────────────────────────────────────────────────────────────────────────╯
+2026-02-05 02:33:18.618 | INFO     | surreal_commands.core.worker:run_worker:187 - Starting Surreal Commands worker
+Importing command modules: commands
+2026-02-05 02:33:18.890 | INFO     | podcast_creator.graph:<module>:19 - Creating podcast generation graph
+  ✅ Imported: commands
+Successfully imported 1/1 modules
+Using 6 registered commands
+Worker configured to handle up to 5 concurrent tasks
+[02:33:19] Checking for existing commands...                       worker.py:109
+           No existing commands found                              worker.py:139
+           Starting LIVE query listener for new commands...        worker.py:142
+─ ⏱ Started command: open_notebook.generate_podcast command:i7i1kdnsu1aoncl20… ─
+[02:33:38] Arguments:                                              worker.py:153
+           {                                                       worker.py:154
+             "content": "笔记本: 1\n{\n  \"sources\": [\n    {\n                
+           \"id\": \"source:zxuc4ryq9zdtdcyvn4sv\",\n                           
+           \"title\": \"Error\",\n      \"insights\": [\n                       
+           {\n          \"id\":                                                 
+           \"source_insight:ur9tgageb7c2atfo8wgj\",\n                           
+           \"created\": null,\n          \"updated\": null,\n                   
+           \"insight_type\": \"Dense Summary\",\n                               
+           \"content\": \"- Input string contains URL-encoded                   
+           characters.\\n- Decoded string is: \\\"测试\\\".\\n-                 
+           \\\"测试\\\" is Chinese for \\\"test\\\".\\n- The                    
+           phrase \\\"Failed to extract content\\\" suggests a                  
+           system error.\\n- The error occurred during a content                
+           extraction process.\\n- The process encountered the                  
+           string \\\"%E6%B5%8B%E8%AF%95\\\".\\n- The system                    
+           likely attempted to parse or interpret this string.\\n-              
+           The extraction failure implies the string was not in an              
+           expected format.\\n- URL encoding is a method for                    
+           representing non-ASCII characters in URLs.\\n-                       
+           \\\"%E6%B5%8B%E8%AF%95\\\" is the URL-encoded form of                
+           \\\"测试\\\".\\n- The system may have lacked proper URL              
+           decoding capability.\\n- Alternatively, the extraction               
+           logic may have failed on encoded input.\\n- The error                
+           message is in English, but the content is in                         
+           Chinese.\\n- This indicates a potential multi-language               
+           handling issue.\\n- \\\"Content extraction\\\" often                 
+           refers to web scraping or data parsing.\\n- The failure              
+           could be in a web crawler, parser, or data processing                
+           pipeline.\\n- The core issue is a mismatch between                   
+           expected and actual input encoding.\\n- The system                   
+           expected plain text but received encoded text.\\n-                   
+           Proper handling would require decoding before or during              
+           extraction.\\n- This is a common error in systems                    
+           processing internationalized content.\"\n        }\n                 
+           ]\n    }\n  ],\n  \"notes\": []\n}",                                 
+             "episode_name": "ai与未来",                                        
+             "episode_profile": "business_analysis",                            
+             "speaker_profile": "business_panel"                                
+           }                                                                    
+
+2026-02-05 02:33:38.647 | INFO     | commands.podcast_commands:generate_podcast_command:59 - Starting podcast generation for episode: ai与未来
+2026-02-05 02:33:38.647 | INFO     | commands.podcast_commands:generate_podcast_command:62 - Using episode profile: business_analysis
+2026-02-05 02:33:38.682 | INFO     | commands.podcast_commands:generate_podcast_command:79 - Loaded episode profile: business_analysis
+2026-02-05 02:33:38.682 | INFO     | commands.podcast_commands:generate_podcast_command:80 - Loaded speaker profile: business_panel
+2026-02-05 02:33:38.733 | INFO     | commands.podcast_commands:generate_podcast_command:118 - Configured podcast-creator with episode and speaker profiles
+2026-02-05 02:33:38.733 | INFO     | commands.podcast_commands:generate_podcast_command:120 - Generated briefing (length: 168 chars)
+2026-02-05 02:33:38.733 | INFO     | commands.podcast_commands:generate_podcast_command:126 - Created output directory: data/podcasts/episodes/ai与未来
+2026-02-05 02:33:38.733 | INFO     | commands.podcast_commands:generate_podcast_command:129 - Starting podcast generation with podcast-creator...
+2026-02-05 02:33:38.734 | INFO     | podcast_creator.nodes:generate_outline_node:24 - Starting outline generation
+2026-02-05 02:33:59.467 | INFO     | podcast_creator.nodes:generate_outline_node:54 - Generated outline with 6 segments
+2026-02-05 02:33:59.468 | INFO     | podcast_creator.nodes:generate_transcript_node:61 - Starting transcript generation
+2026-02-05 02:33:59.483 | INFO     | podcast_creator.nodes:generate_transcript_node:89 - Generating transcript for segment 1/6: Intro: The Hidden Cost of a Single Error
+2026-02-05 02:34:11.435 | INFO     | podcast_creator.nodes:generate_transcript_node:89 - Generating transcript for segment 2/6: Market Implications: When 'Test' Becomes a $200M Missed Market
+2026-02-05 02:34:38.440 | INFO     | podcast_creator.nodes:generate_transcript_node:89 - Generating transcript for segment 3/6: Strategic Insights: Beyond the Decoder — Building Resilience by Design
+2026-02-05 02:34:43.484 | ERROR    | commands.podcast_commands:generate_podcast_command:171 - Podcast generation failed: Failed to parse ValidatedTranscript from completion {"transcript": [{}], "speaker": "Elena Vasquez", "in the digital age, we need to think of URL decoding not just as a developer task, but as an architectural priority. It's about building resilience by design. Let's explore this in three tiers: defensive, adaptive, and anticipatory.": {}, "dialogue": "That makes sense, Marcus. In my experience, a defensive approach is crucial. We need to auto-detect and decode at the point of data ingestion. This way, we can catch and handle encoded inputs before they cause any issues."}. Got: 2 validation errors for ValidatedTranscript
+transcript.0.speaker
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+transcript.0.dialogue
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/OUTPUT_PARSING_FAILURE 
+2026-02-05 02:34:43.484 | ERROR    | commands.podcast_commands:generate_podcast_command:172 - Failed to parse ValidatedTranscript from completion {"transcript": [{}], "speaker": "Elena Vasquez", "in the digital age, we need to think of URL decoding not just as a developer task, but as an architectural priority. It's about building resilience by design. Let's explore this in three tiers: defensive, adaptive, and anticipatory.": {}, "dialogue": "That makes sense, Marcus. In my experience, a defensive approach is crucial. We need to auto-detect and decode at the point of data ingestion. This way, we can catch and handle encoded inputs before they cause any issues."}. Got: 2 validation errors for ValidatedTranscript
+transcript.0.speaker
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+transcript.0.dialogue
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/OUTPUT_PARSING_FAILURE 
+Traceback (most recent call last):
+
+  File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/.venv/lib/python3.12/site-packages/langchain_core/output_parsers/pydantic.py", line 28, in _parse_obj
+    return self.pydantic_object.model_validate(obj)
+           │    │               │              └ {'transcript': [{}], 'speaker': 'Elena Vasquez', "in the digital age, we need to think of URL decoding not just as a develope...
+           │    │               └ <classmethod(<function BaseModel.model_validate at 0x7fb480953ba0>)>
+           │    └ <class 'podcast_creator.core.create_validated_transcript_parser.<locals>.ValidatedTranscript'>
+           └ PydanticOutputParser(pydantic_object=<class 'podcast_creator.core.create_validated_transcript_parser.<locals>.ValidatedTransc...
+  File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/.venv/lib/python3.12/site-packages/pydantic/main.py", line 716, in model_validate
+    return cls.__pydantic_validator__.validate_python(
+           │   │                      └ <method 'validate_python' of 'pydantic_core._pydantic_core.SchemaValidator' objects>
+           │   └ SchemaValidator(title="ValidatedTranscript", validator=Model(
+           │         ModelValidator {
+           │             revalidate: Never,
+           │             validat...
+           └ <class 'podcast_creator.core.create_validated_transcript_parser.<locals>.ValidatedTranscript'>
+
+pydantic_core._pydantic_core.ValidationError: 2 validation errors for ValidatedTranscript
+transcript.0.speaker
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+transcript.0.dialogue
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/.venv/bin/surreal-commands-worker", line 10, in <module>
+    sys.exit(main())
+    │   │    └ <function main at 0x7fb47f3998a0>
+    │   └ <built-in function exit>
+    └ <module 'sys' (built-in)>
+  File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/.venv/lib/python3.12/site-packages/surreal_commands/cli/worker.py", line 8, in main
+    worker_app()
+    └ <typer.main.Typer object at 0x7fb47e44e060>
+  File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/.venv/lib/python3.12/site-packages/typer/main.py", line 319, in __call__
+    return get_command(self)(*args, **kwargs)
+           │           │      │       └ {}
+           │           │      └ ()
+           │           └ <typer.main.Typer object at 0x7fb47e44e060>
+           └ <function get_command at 0x7fb47e1159e0>
+  File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/.venv/lib/python3.12/site-packages/click/core.py", line 1485, in __call__
+    return self.main(*args, **kwargs)
+           │    │     │       └ {}
+           │    │     └ ()
+           │    └ <function TyperGroup.main at 0x7fb47e10e2a0>
+           └ <TyperGroup >
+  File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/.venv/lib/python3.12/site-packages/typer/core.py", line 814, in main
+    return _main(
+           └ <function _main at 0x7fb47e10cf40>
+  File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/.venv/lib/python3.12/site-packages/typer/core.py", line 190, in _main
+    rv = self.invoke(ctx)
+         │    │      └ <click.core.Context object at 0x7fb481626360>
+         │    └ <function Group.invoke at 0x7fb47fe405e0>
+         └ <TyperGroup >
+  File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/.venv/lib/python3.12/site-packages/click/core.py", line 1851, in invoke
+    rv = super().invoke(ctx)
+                        └ <click.core.Context object at 0x7fb481626360>
+  File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/.venv/lib/python3.12/site-packages/click/core.py", line 1269, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+           │   │      │    │           │   └ {'import_modules': 'commands', 'max_tasks': 5, 'debug': False}
+           │   │      │    │           └ <click.core.Context object at 0x7fb481626360>
+           │   │      │    └ <function callback at 0x7fb47e116b60>
+           │   │      └ <TyperGroup >
+           │   └ <function Context.invoke at 0x7fb47fe3e5c0>
+           └ <click.core.Context object at 0x7fb481626360>
+  File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/.venv/lib/python3.12/site-packages/click/core.py", line 824, in invoke
+    return callback(*args, **kwargs)
+           │         │       └ {'import_modules': 'commands', 'max_tasks': 5, 'debug': False}
+           │         └ ()
+           └ <function callback at 0x7fb47e116b60>
+  File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/.venv/lib/python3.12/site-packages/typer/main.py", line 706, in wrapper
+    return callback(**use_params)
+           │          └ {'ctx': <click.core.Context object at 0x7fb481626360>, 'debug': False, 'max_tasks': 5, 'import_modules': 'commands'}
+           └ <function callback at 0x7fb47e116ca0>
+  File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/.venv/lib/python3.12/site-packages/surreal_commands/core/worker.py", line 274, in callback
+    run_worker(debug=debug, max_tasks=max_tasks, import_modules=modules_list)
+    │                │                │                         └ ['commands']
+    │                │                └ 5
+    │                └ False
+    └ <function run_worker at 0x7fb47e116ac0>
+  File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/.venv/lib/python3.12/site-packages/surreal_commands/core/worker.py", line 219, in run_worker
+    asyncio.run(listen_for_commands(max_tasks))
+    │       │   │                   └ 5
+    │       │   └ <function listen_for_commands at 0x7fb47e116a20>
+    │       └ <function run at 0x7fb48142d800>
+    └ <module 'asyncio' from '/home/cyun/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/asyncio/__init__.py'>
+  File "/home/cyun/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 195, in run
+    return runner.run(main)
+           │      │   └ <coroutine object listen_for_commands at 0x7fb4427ee400>
+           │      └ <function Runner.run at 0x7fb480d7c360>
+           └ <asyncio.runners.Runner object at 0x7fb4490434d0>
+  File "/home/cyun/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<listen_for_commands() running at /home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x7fb480d71ee0>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x7fb4490434d0>
+  File "/home/cyun/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/asyncio/base_events.py", line 678, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x7fb480d71e40>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/home/cyun/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/asyncio/base_events.py", line 645, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x7fb480d73c40>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/home/cyun/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/asyncio/base_events.py", line 1999, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x7fb480d18040>
+    └ <Handle Task.task_wakeup(<Future finished result=None>)>
+  File "/home/cyun/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/asyncio/events.py", line 88, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<Future finished result=None>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<Future finished result=None>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<Future finished result=None>)>
+  File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/.venv/lib/python3.12/site-packages/langchain_core/runnables/base.py", line 4837, in _ainvoke
+    output = await acall_func_with_variable_args(
+                   └ <function acall_func_with_variable_args at 0x7fb47f6928e0>
+
+> File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/commands/podcast_commands.py", line 131, in generate_podcast_command
+    result = await create_podcast(
+                   └ <function create_podcast at 0x7fb446666b60>
+
+  File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/.venv/lib/python3.12/site-packages/podcast_creator/graph.py", line 150, in create_podcast
+    result = await graph.ainvoke(initial_state, config=config)
+                   │     │       │                     └ {'configurable': {'outline_provider': 'openai-compatible', 'outline_model': 'qwen-plus', 'transcript_provider': 'openai-compa...
+                   │     │       └ {'content': '笔记本: 1\n{\n  "sources": [\n    {\n      "id": "source:zxuc4ryq9zdtdcyvn4sv",\n      "title": "Error",\n      "in...
+                   │     └ <function Pregel.ainvoke at 0x7fb4460dcae0>
+                   └ <langgraph.graph.state.CompiledStateGraph object at 0x7fb4460e8d70>
+  File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/.venv/lib/python3.12/site-packages/langgraph/pregel/main.py", line 3161, in ainvoke
+    async for chunk in self.astream(
+              │        │    └ <function Pregel.astream at 0x7fb4460dc9a0>
+              │        └ <langgraph.graph.state.CompiledStateGraph object at 0x7fb4460e8d70>
+              └ ('values', {'content': '笔记本: 1\n{\n  "sources": [\n    {\n      "id": "source:zxuc4ryq9zdtdcyvn4sv",\n      "title": "Error",...
+  File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/.venv/lib/python3.12/site-packages/langgraph/pregel/main.py", line 2974, in astream
+    async for _ in runner.atick(
+              │    │      └ <function PregelRunner.atick at 0x7fb4460ca840>
+              │    └ <langgraph.pregel._runner.PregelRunner object at 0x7fb44192bf80>
+              └ None
+  File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/.venv/lib/python3.12/site-packages/langgraph/pregel/_runner.py", line 304, in atick
+    await arun_with_retry(
+          └ <function arun_with_retry at 0x7fb4460c9e40>
+  File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/.venv/lib/python3.12/site-packages/langgraph/pregel/_retry.py", line 138, in arun_with_retry
+    return await task.proc.ainvoke(task.input, config)
+                 │    │            │    │      └ {'metadata': {'outline_provider': 'openai-compatible', 'outline_model': 'qwen-plus', 'transcript_provider': 'openai-compatibl...
+                 │    │            │    └ <member 'input' of 'PregelExecutableTask' objects>
+                 │    │            └ PregelExecutableTask(name='generate_transcript', input={'content': '笔记本: 1\n{\n  "sources": [\n    {\n      "id": "source:zxu...
+                 │    └ <member 'proc' of 'PregelExecutableTask' objects>
+                 └ PregelExecutableTask(name='generate_transcript', input={'content': '笔记本: 1\n{\n  "sources": [\n    {\n      "id": "source:zxu...
+  File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/.venv/lib/python3.12/site-packages/langgraph/_internal/_runnable.py", line 705, in ainvoke
+    input = await asyncio.create_task(
+                  │       └ <function create_task at 0x7fb480d616c0>
+                  └ <module 'asyncio' from '/home/cyun/.local/share/uv/python/cpython-3.12.12-linux-x86_64-gnu/lib/python3.12/asyncio/__init__.py'>
+  File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/.venv/lib/python3.12/site-packages/langgraph/_internal/_runnable.py", line 473, in ainvoke
+    ret = await self.afunc(*args, **kwargs)
+                │    │      │       └ {'config': {'metadata': {'outline_provider': 'openai-compatible', 'outline_model': 'qwen-plus', 'transcript_provider': 'opena...
+                │    │      └ ({'content': '笔记本: 1\n{\n  "sources": [\n    {\n      "id": "source:zxuc4ryq9zdtdcyvn4sv",\n      "title": "Error",\n      "i...
+                │    └ <function generate_transcript_node at 0x7fb4460df7e0>
+                └ generate_transcript(tags=None, recurse=True, explode_args=False, func_accepts={'config': ('N/A', <class 'inspect._empty'>)})
+  File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/.venv/lib/python3.12/site-packages/podcast_creator/nodes.py", line 112, in generate_transcript_node
+    result = validated_transcript_parser.invoke(transcript_preview.content)
+             │                           │      │                  └ '{\n    "transcript": [\n        {\n           \t\t}\t\t],\n\t\t\t"speaker": "Marcus Thompson",\n           "in the digital a...
+             │                           │      └ AIMessage(content='{\n    "transcript": [\n        {\n           \t\t}\t\t],\n\t\t\t"speaker": "Marcus Thompson",\n          ...
+             │                           └ <function BaseOutputParser.invoke at 0x7fb446df6b60>
+             └ PydanticOutputParser(pydantic_object=<class 'podcast_creator.core.create_validated_transcript_parser.<locals>.ValidatedTransc...
+  File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/.venv/lib/python3.12/site-packages/langchain_core/output_parsers/base.py", line 209, in invoke
+    return self._call_with_config(
+           │    └ <function Runnable._call_with_config at 0x7fb47f4f6e80>
+           └ PydanticOutputParser(pydantic_object=<class 'podcast_creator.core.create_validated_transcript_parser.<locals>.ValidatedTransc...
+  File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/.venv/lib/python3.12/site-packages/langchain_core/runnables/base.py", line 2058, in _call_with_config
+    context.run(
+    │       └ <method 'run' of '_contextvars.Context' objects>
+    └ <_contextvars.Context object at 0x7fb43b904a40>
+  File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/.venv/lib/python3.12/site-packages/langchain_core/runnables/config.py", line 435, in call_func_with_variable_args
+    return func(input, **kwargs)  # type: ignore[call-arg]
+           │    │        └ {}
+           │    └ '{\n    "transcript": [\n        {\n           \t\t}\t\t],\n\t\t\t"speaker": "Marcus Thompson",\n           "in the digital a...
+           └ <function BaseOutputParser.invoke.<locals>.<lambda> at 0x7fb440514ea0>
+  File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/.venv/lib/python3.12/site-packages/langchain_core/output_parsers/base.py", line 210, in <lambda>
+    lambda inner_input: self.parse_result([Generation(text=inner_input)]),
+           │            │    │             │               └ '{\n    "transcript": [\n        {\n           \t\t}\t\t],\n\t\t\t"speaker": "Marcus Thompson",\n           "in the digital a...
+           │            │    │             └ <class 'langchain_core.outputs.generation.Generation'>
+           │            │    └ <function PydanticOutputParser.parse_result at 0x7fb446df79c0>
+           │            └ PydanticOutputParser(pydantic_object=<class 'podcast_creator.core.create_validated_transcript_parser.<locals>.ValidatedTransc...
+           └ '{\n    "transcript": [\n        {\n           \t\t}\t\t],\n\t\t\t"speaker": "Marcus Thompson",\n           "in the digital a...
+  File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/.venv/lib/python3.12/site-packages/langchain_core/output_parsers/pydantic.py", line 75, in parse_result
+    return self._parse_obj(json_object)
+           │    │          └ {'transcript': [{}], 'speaker': 'Elena Vasquez', "in the digital age, we need to think of URL decoding not just as a develope...
+           │    └ <function PydanticOutputParser._parse_obj at 0x7fb446ddff60>
+           └ PydanticOutputParser(pydantic_object=<class 'podcast_creator.core.create_validated_transcript_parser.<locals>.ValidatedTransc...
+  File "/home/cyun/Disk/ubuntu20/APP/notebookai-back/notebookai_up/.venv/lib/python3.12/site-packages/langchain_core/output_parsers/pydantic.py", line 35, in _parse_obj
+    raise self._parser_exception(e, obj) from e
+          │    │                    └ {'transcript': [{}], 'speaker': 'Elena Vasquez', "in the digital age, we need to think of URL decoding not just as a develope...
+          │    └ <function PydanticOutputParser._parser_exception at 0x7fb446df4180>
+          └ PydanticOutputParser(pydantic_object=<class 'podcast_creator.core.create_validated_transcript_parser.<locals>.ValidatedTransc...
+
+langchain_core.exceptions.OutputParserException: Failed to parse ValidatedTranscript from completion {"transcript": [{}], "speaker": "Elena Vasquez", "in the digital age, we need to think of URL decoding not just as a developer task, but as an architectural priority. It's about building resilience by design. Let's explore this in three tiers: defensive, adaptive, and anticipatory.": {}, "dialogue": "That makes sense, Marcus. In my experience, a defensive approach is crucial. We need to auto-detect and decode at the point of data ingestion. This way, we can catch and handle encoded inputs before they cause any issues."}. Got: 2 validation errors for ValidatedTranscript
+transcript.0.speaker
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+transcript.0.dialogue
+  Field required [type=missing, input_value={}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.12/v/missing
+For troubleshooting, visit: https://docs.langchain.com/oss/python/langchain/errors/OUTPUT_PARSING_FAILURE 
+During task with name 'generate_transcript' and id '39046e40-6566-6932-7fdf-117576679098'

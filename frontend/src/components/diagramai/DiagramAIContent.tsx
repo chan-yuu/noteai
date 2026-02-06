@@ -1,0 +1,208 @@
+'use client'
+
+import { Suspense, useCallback, useEffect, useRef, useState } from 'react'
+import { DrawIoEmbed } from 'react-drawio'
+import type { ImperativePanelHandle } from 'react-resizable-panels'
+import ChatPanel from '@/components/diagramai/chat-panel'
+import {
+  ResizableHandle,
+  ResizablePanel,
+  ResizablePanelGroup,
+} from '@/components/ui/resizable'
+import { useDiagram } from '@/contexts/diagram-context'
+
+const drawioBaseUrl =
+  process.env.NEXT_PUBLIC_DRAWIO_BASE_URL || 'https://embed.diagrams.net'
+
+export function DiagramAIContent() {
+  const { drawioRef, handleDiagramExport, onDrawioLoad, resetDrawioReady } =
+    useDiagram()
+  const [isMobile, setIsMobile] = useState(false)
+  const [isChatVisible, setIsChatVisible] = useState(true)
+  const [drawioUi, setDrawioUi] = useState<'min' | 'sketch'>('min')
+  const [darkMode, setDarkMode] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false)
+  const [isDrawioReady, setIsDrawioReady] = useState(false)
+
+  const chatPanelRef = useRef<ImperativePanelHandle>(null)
+  const isMobileRef = useRef(false)
+
+  // Load preferences from localStorage after mount
+  useEffect(() => {
+    const savedUi = localStorage.getItem('drawio-theme')
+    if (savedUi === 'min' || savedUi === 'sketch') {
+      setDrawioUi(savedUi)
+    }
+
+    const savedDarkMode = localStorage.getItem('diagram-ai-dark-mode')
+    if (savedDarkMode !== null) {
+      const isDark = savedDarkMode === 'true'
+      setDarkMode(isDark)
+      document.documentElement.classList.toggle('dark', isDark)
+    } else {
+      const prefersDark = window.matchMedia(
+        '(prefers-color-scheme: dark)'
+      ).matches
+      setDarkMode(prefersDark)
+      document.documentElement.classList.toggle('dark', prefersDark)
+    }
+
+    setIsLoaded(true)
+  }, [])
+
+  const handleDrawioLoad = useCallback(() => {
+    setIsDrawioReady(true)
+    onDrawioLoad()
+  }, [onDrawioLoad])
+
+  const handleDarkModeChange = () => {
+    const newValue = !darkMode
+    setDarkMode(newValue)
+    localStorage.setItem('diagram-ai-dark-mode', String(newValue))
+    document.documentElement.classList.toggle('dark', newValue)
+    setIsDrawioReady(false)
+    resetDrawioReady()
+  }
+
+  const handleDrawioUiChange = () => {
+    const newUi = drawioUi === 'min' ? 'sketch' : 'min'
+    localStorage.setItem('drawio-theme', newUi)
+    setDrawioUi(newUi)
+    setIsDrawioReady(false)
+    resetDrawioReady()
+  }
+
+  // Check mobile - reset draw.io before crossing breakpoint
+  const isInitialRenderRef = useRef(true)
+  useEffect(() => {
+    const checkMobile = () => {
+      const newIsMobile = window.innerWidth < 768
+      if (
+        !isInitialRenderRef.current &&
+        newIsMobile !== isMobileRef.current
+      ) {
+        setIsDrawioReady(false)
+        resetDrawioReady()
+      }
+      isMobileRef.current = newIsMobile
+      isInitialRenderRef.current = false
+      setIsMobile(newIsMobile)
+    }
+
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [resetDrawioReady])
+
+  const toggleChatPanel = () => {
+    const panel = chatPanelRef.current
+    if (panel) {
+      if (panel.isCollapsed()) {
+        panel.expand()
+        setIsChatVisible(true)
+      } else {
+        panel.collapse()
+        setIsChatVisible(false)
+      }
+    }
+  }
+
+  // Keyboard shortcut for toggling chat panel
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if ((event.ctrlKey || event.metaKey) && event.key === 'b') {
+        event.preventDefault()
+        toggleChatPanel()
+      }
+    }
+
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [])
+
+  return (
+    <div className="h-full bg-background relative overflow-hidden">
+      <ResizablePanelGroup
+        id="diagram-ai-panel-group"
+        direction={isMobile ? 'vertical' : 'horizontal'}
+        className="h-full"
+      >
+        <ResizablePanel
+          id="diagram-drawio-panel"
+          defaultSize={isMobile ? 50 : 67}
+          minSize={20}
+        >
+          <div className={`h-full relative ${isMobile ? 'p-1' : 'p-2'}`}>
+            <div className="h-full rounded-xl overflow-hidden shadow-lg border border-border/30 relative">
+              {isLoaded && (
+                <div
+                  className={`h-full w-full ${isDrawioReady ? '' : 'invisible absolute inset-0'}`}
+                >
+                  <DrawIoEmbed
+                    key={`${drawioUi}-${darkMode}`}
+                    ref={drawioRef}
+                    onExport={handleDiagramExport}
+                    onLoad={handleDrawioLoad}
+                    baseUrl={drawioBaseUrl}
+                    urlParameters={{
+                      ui: drawioUi,
+                      spin: false,
+                      libraries: false,
+                      saveAndExit: false,
+                      noSaveBtn: true,
+                      noExitBtn: true,
+                      dark: darkMode,
+                    }}
+                  />
+                </div>
+              )}
+              {(!isLoaded || !isDrawioReady) && (
+                <div className="h-full w-full bg-background flex items-center justify-center">
+                  <span className="text-muted-foreground">
+                    Draw.io panel is loading...
+                  </span>
+                </div>
+              )}
+            </div>
+          </div>
+        </ResizablePanel>
+
+        <ResizableHandle withHandle />
+
+        {/* Chat Panel */}
+        <ResizablePanel
+          key={isMobile ? 'mobile' : 'desktop'}
+          id="diagram-chat-panel"
+          ref={chatPanelRef}
+          defaultSize={isMobile ? 50 : 33}
+          minSize={isMobile ? 20 : 15}
+          maxSize={isMobile ? 80 : 50}
+          collapsible={!isMobile}
+          collapsedSize={isMobile ? 0 : 3}
+          onCollapse={() => setIsChatVisible(false)}
+          onExpand={() => setIsChatVisible(true)}
+        >
+          <div className={`h-full ${isMobile ? 'p-1' : 'py-2 pr-2'}`}>
+            <Suspense
+              fallback={
+                <div className="h-full bg-card rounded-xl border border-border/30 flex items-center justify-center text-muted-foreground">
+                  Loading chat...
+                </div>
+              }
+            >
+              <ChatPanel
+                isVisible={isChatVisible}
+                onToggleVisibility={toggleChatPanel}
+                drawioUi={drawioUi}
+                onToggleDrawioUi={handleDrawioUiChange}
+                darkMode={darkMode}
+                onToggleDarkMode={handleDarkModeChange}
+                isMobile={isMobile}
+              />
+            </Suspense>
+          </div>
+        </ResizablePanel>
+      </ResizablePanelGroup>
+    </div>
+  )
+}
