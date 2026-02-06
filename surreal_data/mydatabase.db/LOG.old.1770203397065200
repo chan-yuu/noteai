@@ -1,0 +1,6 @@
+2026/02/01-17:20:29.483301 140065785243328 [WARN] [db/error_handler.cc:398] Background IO error IO error: No space left on device: While appending to file: /mydata/mydatabase.db/000095.log: No space left on device, reason 2
+2026/02/01-17:20:29.486013 140064891848384 [WARN] [db/error_handler.cc:398] Background IO error IO error: No space left on device: While appending to file: /mydata/mydatabase.db/000095.log: No space left on device, reason 2
+2026/02/01-17:20:29.486142 140057792992960 [ERROR] [file/sst_file_manager_impl.cc:285] free space [0 bytes] is less than required disk buffer [134217728 bytes]
+2026/02/01-17:20:29.487543 140057792992960 [ERROR] [file/sst_file_manager_impl.cc:290] Cannot clear hard error
+2026/02/01-17:20:34.489121 140057792992960 [ERROR] [file/sst_file_manager_impl.cc:285] free space [0 bytes] is less than required disk buffer [134217728 bytes]
+2026/02/01-17:21:04.176069 140064912828096 [WARN] [db/error_handler.cc:398] Background IO error IO error: No space left on device: While appending to file: /mydata/mydatabase.db/000095.log: No space left on device, reason 2

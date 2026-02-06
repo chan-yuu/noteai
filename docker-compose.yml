@@ -1,0 +1,72 @@
+services:
+  surrealdb:
+    image: surrealdb/surrealdb:v2
+    command: start --user root --pass root --bind 0.0.0.0:8000 rocksdb:/mydata/mydatabase.db
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./surreal_data:/mydata
+    restart: unless-stopped
+
+  open_notebook:
+    build:
+      context: .
+      dockerfile: Dockerfile.single
+    ports:
+      - "8502:8502"  # Web UI (React frontend)
+      - "5055:5055"  # API (required!)
+    environment:
+      # API 配置
+      - API_URL=http://localhost:5055
+      
+      # 数据库配置
+      - SURREAL_URL=ws://surrealdb:8000/rpc
+      - SURREAL_USER=root
+      - SURREAL_PASSWORD=root
+      - SURREAL_NAMESPACE=open_notebook
+      - SURREAL_DATABASE=open_notebook
+      
+      # DeepSeek AI 配置（已配置）
+      - DEEPSEEK_API_KEY=sk-28d7d669e40b406a91f76cdba0e7c5c5
+      
+      # AI 提供商配置（其他选项）
+      # OpenAI
+      # - OPENAI_API_KEY=sk-your-key-here
+      
+      # Anthropic Claude
+      # - ANTHROPIC_API_KEY=sk-ant-your-key-here
+      
+      # Google Gemini
+      # - GOOGLE_API_KEY=AIzaSyA96FjTPYSOekkUqky6OdtIv2FjdIn87_A
+      
+      # OpenRouter
+      # - OPENROUTER_API_KEY=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
+      
+      # OpenAI 兼容接口 - 国内便宜的API服务商
+      # 现在支持同时配置多个服务商！
+      
+      # 阿里云百炼 (DashScope)
+      - DASHSCOPE_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
+      - DASHSCOPE_API_KEY=sk-ed28dce9908f432bacca53fcf76e92eb
+      
+      # 硅基流动 (SiliconFlow)
+      - SILICONFLOW_BASE_URL=https://api.siliconflow.cn/v1
+      - SILICONFLOW_API_KEY=sk-qtpxjyljhqipkoxdgcsbynhdvydtmqjzmtfuzwaojgwpdshg
+      
+      # 火山方舟 (豆包 Doubao)
+      - VOLCENGINE_BASE_URL=https://ark.cn-beijing.volces.com/api/v3
+      - VOLCENGINE_API_KEY=d891ecdc-caf0-404b-bb82-664e40cef71a
+      
+      # 本地 Ollama（如果使用）
+      # - OLLAMA_API_BASE=http://host.docker.internal:11434
+      
+      # 密码保护（可选）
+      # - OPEN_NOTEBOOK_PASSWORD=your-secure-password
+      
+    volumes:
+      - ./notebook_data:/app/data
+    depends_on:
+      - surrealdb
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
