@@ -1,14 +1,7 @@
 # NotebookAI
-<img width="2560" height="1537" alt="1" src="https://github.com/user-attachments/assets/1ae14083-7357-4cc5-9ee7-792451c3014b" />
-
-<img width="2560" height="1537" alt="2" src="https://github.com/user-attachments/assets/21190bc5-d683-48d1-9094-0d54c3143510" />
-
-
-<img width="2560" height="1537" alt="3" src="https://github.com/user-attachments/assets/60d07888-510d-4da0-8660-a9f15bd4fa67" />
-
 ## 📅 待办事项清单 (Current Tasks)
 
-### 🎙️ 任务一：AI 播客 (AI Podcast)
+### 🎙️ 一：AI 播客 (AI Podcast)
 - [ ] **策划阶段**
     - [ ] 确定本期主题（例如：Transformer 架构解析）
     - [ ] 邀请嘉宾或准备单口大纲
@@ -20,7 +13,7 @@
     - [ ] 生成 Shownotes（时间轴 + 简介）
     - [ ] 上传至托管平台 (Spotify/Apple/小宇宙)
 
-### 💻 任务二：AI 代码审查 (AI Code Review)
+### 💻 二：AI 代码审查 (AI Code Review)
 - [ ] **环境配置**
     - [x] 申请 OpenAI/Claude API Key - [ ] 配置本地开发环境 (Python/Node.js)
 - [ ] **功能开发**
@@ -29,6 +22,13 @@
     - [ ] 测试：针对一段充满 Bug 的代码进行测试
 - [ ] **部署上线**
     - [ ] 编写使用文档 (README.md)
+    - [ ] 
+<img width="2560" height="1537" alt="1" src="https://github.com/user-attachments/assets/1ae14083-7357-4cc5-9ee7-792451c3014b" />
+
+<img width="2560" height="1537" alt="2" src="https://github.com/user-attachments/assets/21190bc5-d683-48d1-9094-0d54c3143510" />
+
+
+<img width="2560" height="1537" alt="3" src="https://github.com/user-attachments/assets/60d07888-510d-4da0-8660-a9f15bd4fa67" />
 
 ## 快速开始
 
