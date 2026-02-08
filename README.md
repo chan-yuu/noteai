@@ -23,6 +23,9 @@
 - [ ] **部署上线**
     - [ ] 编写使用文档 (README.md)
     - [ ] 
+
+怎么让模型上网？模型上网之后怎么去给我搜索论文？
+
 <img width="2560" height="1537" alt="1" src="https://github.com/user-attachments/assets/1ae14083-7357-4cc5-9ee7-792451c3014b" />
 
 <img width="2560" height="1537" alt="2" src="https://github.com/user-attachments/assets/21190bc5-d683-48d1-9094-0d54c3143510" />
