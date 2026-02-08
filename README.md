@@ -6,6 +6,30 @@
 
 <img width="2560" height="1537" alt="3" src="https://github.com/user-attachments/assets/60d07888-510d-4da0-8660-a9f15bd4fa67" />
 
+## 📅 待办事项清单 (Current Tasks)
+
+### 🎙️ 任务一：AI 播客 (AI Podcast)
+- [ ] **策划阶段**
+    - [ ] 确定本期主题（例如：Transformer 架构解析）
+    - [ ] 邀请嘉宾或准备单口大纲
+- [ ] **制作阶段**
+    - [ ] 录制音频素材
+    - [ ] 使用 AI 工具（如 Adobe Podcast）进行降噪处理
+    - [ ] 剪辑与合成背景音乐
+- [ ] **发布阶段**
+    - [ ] 生成 Shownotes（时间轴 + 简介）
+    - [ ] 上传至托管平台 (Spotify/Apple/小宇宙)
+
+### 💻 任务二：AI 代码审查 (AI Code Review)
+- [ ] **环境配置**
+    - [x] 申请 OpenAI/Claude API Key - [ ] 配置本地开发环境 (Python/Node.js)
+- [ ] **功能开发**
+    - [ ] 编写 Prompt：`你是一个资深架构师，请审查这段代码...`
+    - [ ] 开发 GitHub Action 或 GitLab CI 集成脚本
+    - [ ] 测试：针对一段充满 Bug 的代码进行测试
+- [ ] **部署上线**
+    - [ ] 编写使用文档 (README.md)
+
 ## 快速开始
 
 ```bash
